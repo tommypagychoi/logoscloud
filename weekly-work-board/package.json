@@ -1,0 +1,12 @@
+{
+  "name": "logos-weekly-work-board",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler pages dev . --port 8790",
+    "deploy": "wrangler pages deploy . --project-name logos-weekly-work-board"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
