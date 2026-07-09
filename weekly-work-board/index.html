@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LOGOS 주간업무 게시판</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7f9;
+      --surface: #ffffff;
+      --surface-soft: #eef3f6;
+      --ink: #16202a;
+      --muted: #617181;
+      --line: #d8e0e7;
+      --navy: #1f3a5f;
+      --teal: #167f79;
+      --green: #247a45;
+      --amber: #a96500;
+      --red: #b23a48;
+      --shadow: 0 14px 32px rgba(25, 42, 62, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink); font-family: "Malgun Gothic", "Apple SD Gothic Neo", Arial, sans-serif; letter-spacing: 0; }
+    button, input, select, textarea { font: inherit; }
+    button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); min-height: 38px; padding: 0 12px; border-radius: 6px; cursor: pointer; }
+    button:hover { border-color: #9eb0bf; background: #f8fafb; }
+    button:disabled { cursor: wait; opacity: 0.62; }
+    .primary { border-color: var(--navy); background: var(--navy); color: #fff; font-weight: 700; }
+    .danger { border-color: #efc2c8; color: var(--red); }
+    .app { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside { border-right: 1px solid var(--line); background: #102238; color: #f7fbff; padding: 24px 18px; }
+    .brand { font-size: 22px; line-height: 1.25; font-weight: 800; }
+    .domain { margin-top: 8px; color: #b8c7d6; font-size: 13px; }
+    .week-card { margin-top: 22px; padding: 14px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.07); border-radius: 8px; }
+    .week-card label { display: block; margin-bottom: 8px; color: #d7e3ee; font-size: 13px; font-weight: 700; }
+    .week-card input { width: 100%; min-height: 40px; border: 1px solid rgba(255,255,255,.18); background: #0c1a2b; color: #fff; border-radius: 6px; padding: 0 10px; }
+    nav { display: grid; gap: 8px; margin-top: 24px; }
+    .nav-button { display: grid; grid-template-columns: 24px minmax(0,1fr) auto; align-items: center; gap: 8px; width: 100%; border-color: rgba(255,255,255,.12); background: transparent; color: #eaf3fb; text-align: left; }
+    .nav-button.active { background: #f7fbff; color: #102238; font-weight: 800; }
+    .count { display: inline-grid; place-items: center; min-width: 26px; height: 24px; padding: 0 6px; border-radius: 999px; background: rgba(255,255,255,.14); font-size: 12px; }
+    .nav-button.active .count { background: #dce8f2; }
+    main { padding: 24px; }
+    header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: end; margin-bottom: 14px; }
+    h1 { margin: 0; font-size: 28px; line-height: 1.2; }
+    .sub { margin-top: 6px; color: var(--muted); font-size: 14px; }
+    .sync-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; padding: 10px 12px; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; box-shadow: var(--shadow); color: var(--muted); font-size: 13px; }
+    .sync-bar strong { color: var(--ink); }
+    .sync-bar.warn { border-color: #f2d6a6; background: #fff8ec; }
+    .sync-bar.ok { border-color: #b7dfc5; background: #f1fbf4; }
+    .sync-bar.error { border-color: #efc2c8; background: #fff4f5; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 10px; margin-bottom: 16px; }
+    .stat { min-height: 86px; padding: 14px; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; box-shadow: var(--shadow); }
+    .stat b { display: block; color: var(--muted); font-size: 13px; }
+    .stat strong { display: block; margin-top: 8px; font-size: 25px; }
+    .workspace { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: start; }
+    .toolbar, .panel, .task-list { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; box-shadow: var(--shadow); }
+    .toolbar { display: grid; grid-template-columns: minmax(180px, 1fr) 150px 150px; gap: 10px; padding: 12px; margin-bottom: 12px; }
+    .field { display: grid; gap: 6px; }
+    .field label { color: var(--muted); font-size: 12px; font-weight: 800; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 40px; border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 6px; padding: 8px 10px; }
+    .field textarea { min-height: 92px; resize: vertical; }
+    .task-list { overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { padding: 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: var(--surface-soft); color: #435362; font-size: 13px; }
+    tr:last-child td { border-bottom: 0; }
+    .title-cell { display: grid; gap: 5px; }
+    .title-cell strong { overflow-wrap: anywhere; }
+    .memo { color: var(--muted); font-size: 13px; line-height: 1.45; overflow-wrap: anywhere; }
+    .badge { display: inline-flex; align-items: center; min-height: 26px; padding: 0 8px; border-radius: 999px; background: #e8eef4; color: #334252; font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .badge.todo { background: #edf2f8; color: #334252; }
+    .badge.doing { background: #e7f1f0; color: var(--teal); }
+    .badge.done { background: #e7f3eb; color: var(--green); }
+    .badge.hold { background: #fff0da; color: var(--amber); }
+    .badge.risk { background: #fae7ea; color: var(--red); }
+    .actions { display: flex; flex-wrap: wrap; gap: 6px; }
+    .actions button { min-width: 38px; padding: 0 9px; }
+    .panel { padding: 16px; }
+    .panel h2 { margin: 0 0 12px; font-size: 18px; }
+    form { display: grid; gap: 12px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .empty { padding: 34px 12px; color: var(--muted); text-align: center; }
+    @media (max-width: 1080px) { .app, .workspace { grid-template-columns: 1fr; } aside { border-right: 0; } nav { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+    @media (max-width: 760px) { main { padding: 16px; } header, .toolbar, .stats, .form-row, nav { grid-template-columns: 1fr; } .sync-bar { display: grid; } table, thead, tbody, tr, th, td { display: block; } thead { display: none; } tr { border-bottom: 1px solid var(--line); } td { border-bottom: 0; padding: 8px 12px; } td::before { content: attr(data-label); display: block; margin-bottom: 4px; color: var(--muted); font-size: 12px; font-weight: 800; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <div class="brand">LOGOS<br>주간업무 게시판</div>
+      <div class="domain">www.logoscloud.kr</div>
+      <div class="week-card"><label for="weekInput">조회 주차</label><input id="weekInput" type="week"></div>
+      <nav aria-label="업무 상태 필터">
+        <button class="nav-button active" data-filter="all"><span>전체</span><span>업무</span><span class="count" id="countAll">0</span></button>
+        <button class="nav-button" data-filter="todo"><span>대기</span><span>계획</span><span class="count" id="countTodo">0</span></button>
+        <button class="nav-button" data-filter="doing"><span>진행</span><span>작업</span><span class="count" id="countDoing">0</span></button>
+        <button class="nav-button" data-filter="done"><span>완료</span><span>종료</span><span class="count" id="countDone">0</span></button>
+        <button class="nav-button" data-filter="risk"><span>위험</span><span>확인</span><span class="count" id="countRisk">0</span></button>
+      </nav>
+    </aside>
+    <main>
+      <header><div><h1 id="pageTitle">이번 주 업무</h1><div class="sub">Google Sheets에 저장된 팀 주간업무를 한 화면에서 관리합니다.</div></div><button class="primary" id="exportButton" type="button">CSV 내보내기</button></header>
+      <div class="sync-bar warn" id="syncBar"><span><strong>연동 대기</strong> <span id="syncText">Apps Script 웹앱 URL을 설정하면 Google Sheets와 동기화됩니다.</span></span><button id="refreshButton" type="button">새로고침</button></div>
+      <section class="stats" aria-label="업무 요약"><div class="stat"><b>전체 업무</b><strong id="statTotal">0</strong></div><div class="stat"><b>진행 중</b><strong id="statDoing">0</strong></div><div class="stat"><b>완료</b><strong id="statDone">0</strong></div><div class="stat"><b>위험/보류</b><strong id="statAttention">0</strong></div></section>
+      <div class="workspace">
+        <section>
+          <div class="toolbar"><div class="field"><label for="searchInput">검색</label><input id="searchInput" type="search" placeholder="업무명, 담당자, 메모"></div><div class="field"><label for="ownerFilter">담당자</label><select id="ownerFilter"></select></div><div class="field"><label for="sortSelect">정렬</label><select id="sortSelect"><option value="dueAsc">마감일 빠른순</option><option value="dueDesc">마감일 늦은순</option><option value="priority">우선순위순</option></select></div></div>
+          <div class="task-list"><table><thead><tr><th style="width:42%;">업무</th><th style="width:14%;">상태</th><th style="width:14%;">담당</th><th style="width:14%;">마감</th><th style="width:16%;">작업</th></tr></thead><tbody id="taskBody"></tbody></table><div class="empty" id="emptyState" hidden>표시할 업무가 없습니다.</div></div>
+        </section>
+        <section class="panel"><h2 id="formTitle">업무 등록</h2><form id="taskForm"><input id="taskId" type="hidden"><div class="field"><label for="taskTitle">업무명</label><input id="taskTitle" required placeholder="예: 주간 운영 보고서 작성"></div><div class="form-row"><div class="field"><label for="taskOwner">담당자</label><input id="taskOwner" required placeholder="담당자"></div><div class="field"><label for="taskDue">마감일</label><input id="taskDue" type="date" required></div></div><div class="form-row"><div class="field"><label for="taskStatus">상태</label><select id="taskStatus"><option value="todo">대기</option><option value="doing">진행</option><option value="done">완료</option><option value="hold">보류</option><option value="risk">위험</option></select></div><div class="field"><label for="taskPriority">우선순위</label><select id="taskPriority"><option value="1">높음</option><option value="2" selected>보통</option><option value="3">낮음</option></select></div></div><div class="field"><label for="taskMemo">메모</label><textarea id="taskMemo" placeholder="진행 내용, 이슈, 다음 액션"></textarea></div><button class="primary" type="submit" id="saveButton">저장</button><button id="resetButton" type="button">입력 초기화</button></form></section>
+      </div>
+    </main>
+  </div>
+  <script>
+    const SHEET_URL = "https://docs.google.com/spreadsheets/d/1a1X9ediHP77v_XPkWLjjUdOi2-H8KKLFRg1VaQ0s8UU/edit?hl=ko&pli=1&gid=0#gid=0";
+    const GOOGLE_SCRIPT_URL = "";
+    const API_TOKEN = "";
+    const LOCAL_STORAGE_KEY = "logos.weeklyWorkBoard.fallback.v1";
+    const statusLabel = { todo: "대기", doing: "진행", done: "완료", hold: "보류", risk: "위험" };
+    const priorityLabel = { 1: "높음", 2: "보통", 3: "낮음" };
+    const statusFlow = ["todo", "doing", "done"];
+    const elements = { weekInput: document.getElementById("weekInput"), pageTitle: document.getElementById("pageTitle"), syncBar: document.getElementById("syncBar"), syncText: document.getElementById("syncText"), searchInput: document.getElementById("searchInput"), ownerFilter: document.getElementById("ownerFilter"), sortSelect: document.getElementById("sortSelect"), taskBody: document.getElementById("taskBody"), emptyState: document.getElementById("emptyState"), form: document.getElementById("taskForm"), formTitle: document.getElementById("formTitle"), taskId: document.getElementById("taskId"), taskTitle: document.getElementById("taskTitle"), taskOwner: document.getElementById("taskOwner"), taskDue: document.getElementById("taskDue"), taskStatus: document.getElementById("taskStatus"), taskPriority: document.getElementById("taskPriority"), taskMemo: document.getElementById("taskMemo"), resetButton: document.getElementById("resetButton"), refreshButton: document.getElementById("refreshButton"), exportButton: document.getElementById("exportButton"), saveButton: document.getElementById("saveButton") };
+    let activeFilter = "all";
+    let tasks = [];
+    let busy = false;
+    function toWeekValue(date) { const target = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())); const dayNumber = target.getUTCDay() || 7; target.setUTCDate(target.getUTCDate() + 4 - dayNumber); const yearStart = new Date(Date.UTC(target.getUTCFullYear(), 0, 1)); const weekNumber = Math.ceil((((target - yearStart) / 86400000) + 1) / 7); return `${target.getUTCFullYear()}-W${String(weekNumber).padStart(2, "0")}`; }
+    function dateFromWeek(weekValue) { const [year, week] = weekValue.split("-W").map(Number); const firstDay = new Date(year, 0, 1 + (week - 1) * 7); const day = firstDay.getDay(); const monday = new Date(firstDay); monday.setDate(firstDay.getDate() - ((day + 6) % 7)); return monday; }
+    function toInputDate(date) { return [date.getFullYear(), String(date.getMonth() + 1).padStart(2, "0"), String(date.getDate()).padStart(2, "0")].join("-"); }
+    function sameWeek(dateString, weekValue) { if (!dateString) return false; return toWeekValue(new Date(`${dateString}T00:00:00`)) === weekValue; }
+    function escapeHtml(value) { return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
+    function weekTitle(weekValue) { const monday = dateFromWeek(weekValue); const sunday = new Date(monday); sunday.setDate(monday.getDate() + 6); return `${monday.getMonth() + 1}/${monday.getDate()} - ${sunday.getMonth() + 1}/${sunday.getDate()} 주간업무`; }
+    function apiReady() { return GOOGLE_SCRIPT_URL.startsWith("https://script.google.com/"); }
+    function setSyncState(type, message) { elements.syncBar.className = `sync-bar ${type}`; elements.syncText.textContent = message; }
+    function setBusy(value) { busy = value; elements.saveButton.disabled = value; elements.refreshButton.disabled = value; }
+    function sampleTasks() { const monday = dateFromWeek(toWeekValue(new Date())); const friday = new Date(monday); friday.setDate(monday.getDate() + 4); return [{ id: crypto.randomUUID(), title: "주간 업무 계획 취합", owner: "운영팀", due: toInputDate(monday), status: "doing", priority: "1", memo: "팀별 주요 업무와 리스크를 오전 중 취합" }, { id: crypto.randomUUID(), title: "주간 운영 보고서 작성", owner: "관리자", due: toInputDate(friday), status: "todo", priority: "2", memo: "완료/진행/지연 항목 구분" }]; }
+    function loadLocalTasks() { const saved = localStorage.getItem(LOCAL_STORAGE_KEY); if (saved) return JSON.parse(saved); const initial = sampleTasks(); localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(initial)); return initial; }
+    function saveLocalTasks() { localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks)); }
+    function jsonpRequest(action, payload = {}) { return new Promise((resolve, reject) => { const callbackName = `logosSheetCallback_${Date.now()}_${Math.random().toString(16).slice(2)}`; const script = document.createElement("script"); const params = new URLSearchParams({ action, callback: callbackName, token: API_TOKEN, payload: JSON.stringify(payload) }); window[callbackName] = (response) => { cleanup(); if (!response || response.ok === false) { reject(new Error(response?.error || "Google Sheets 요청에 실패했습니다.")); return; } resolve(response); }; function cleanup() { delete window[callbackName]; script.remove(); } script.onerror = () => { cleanup(); reject(new Error("Apps Script 웹앱에 연결할 수 없습니다.")); }; script.src = `${GOOGLE_SCRIPT_URL}?${params.toString()}`; document.body.appendChild(script); }); }
+    async function loadTasks() { if (!apiReady()) { tasks = loadLocalTasks(); setSyncState("warn", "아직 Apps Script URL이 설정되지 않아 이 브라우저에만 임시 저장됩니다."); render(); return; } setBusy(true); try { const response = await jsonpRequest("list"); tasks = Array.isArray(response.tasks) ? response.tasks : []; setSyncState("ok", `Google Sheets 동기화 완료: ${new Date().toLocaleString("ko-KR")}`); render(); } catch (error) { tasks = loadLocalTasks(); setSyncState("error", `${error.message} 임시 로컬 데이터를 표시합니다.`); render(); } finally { setBusy(false); } }
+    async function saveTask(payload) { if (!apiReady()) { if (payload.id) tasks = tasks.map((task) => task.id === payload.id ? payload : task); else tasks.push({ ...payload, id: crypto.randomUUID() }); saveLocalTasks(); render(); return; } setBusy(true); try { await jsonpRequest(payload.id ? "update" : "add", payload); await loadTasks(); } finally { setBusy(false); } }
+    async function deleteTask(id) { if (!apiReady()) { tasks = tasks.filter((task) => task.id !== id); saveLocalTasks(); render(); return; } setBusy(true); try { await jsonpRequest("delete", { id }); await loadTasks(); } finally { setBusy(false); } }
+    async function updateTaskStatus(task) { const next = statusFlow[(statusFlow.indexOf(task.status) + 1) % statusFlow.length] || "todo"; await saveTask({ ...task, status: next }); }
+    function filteredTasks() { const keyword = elements.searchInput.value.trim().toLowerCase(); const owner = elements.ownerFilter.value; const week = elements.weekInput.value; return tasks.filter((task) => sameWeek(task.due, week)).filter((task) => activeFilter === "all" || task.status === activeFilter).filter((task) => !owner || task.owner === owner).filter((task) => !keyword || [task.title, task.owner, task.memo].some((field) => String(field || "").toLowerCase().includes(keyword))).sort((a, b) => { if (elements.sortSelect.value === "dueDesc") return b.due.localeCompare(a.due); if (elements.sortSelect.value === "priority") return Number(a.priority) - Number(b.priority) || a.due.localeCompare(b.due); return a.due.localeCompare(b.due); }); }
+    function updateOwnerOptions() { const selected = elements.ownerFilter.value; const owners = [...new Set(tasks.filter((task) => sameWeek(task.due, elements.weekInput.value)).map((task) => task.owner).filter(Boolean))].sort(); elements.ownerFilter.innerHTML = `<option value="">전체</option>${owners.map((owner) => `<option value="${escapeHtml(owner)}">${escapeHtml(owner)}</option>`).join("")}`; elements.ownerFilter.value = owners.includes(selected) ? selected : ""; }
+    function updateCounts() { const weekTasks = tasks.filter((task) => sameWeek(task.due, elements.weekInput.value)); const count = (status) => weekTasks.filter((task) => task.status === status).length; document.getElementById("countAll").textContent = weekTasks.length; document.getElementById("countTodo").textContent = count("todo"); document.getElementById("countDoing").textContent = count("doing"); document.getElementById("countDone").textContent = count("done"); document.getElementById("countRisk").textContent = count("risk"); document.getElementById("statTotal").textContent = weekTasks.length; document.getElementById("statDoing").textContent = count("doing"); document.getElementById("statDone").textContent = count("done"); document.getElementById("statAttention").textContent = count("risk") + count("hold"); }
+    function render() { elements.pageTitle.textContent = weekTitle(elements.weekInput.value); updateOwnerOptions(); updateCounts(); const rows = filteredTasks(); elements.emptyState.hidden = rows.length > 0; elements.taskBody.innerHTML = rows.map((task) => `<tr><td data-label="업무"><div class="title-cell"><strong>${escapeHtml(task.title)}</strong><span class="memo">${escapeHtml(task.memo || "메모 없음")}</span><span class="memo">우선순위: ${priorityLabel[task.priority] || "보통"}</span></div></td><td data-label="상태"><span class="badge ${escapeHtml(task.status)}">${statusLabel[task.status] || task.status}</span></td><td data-label="담당">${escapeHtml(task.owner)}</td><td data-label="마감">${escapeHtml(task.due)}</td><td data-label="작업"><div class="actions"><button type="button" data-action="edit" data-id="${escapeHtml(task.id)}" title="수정">수정</button><button type="button" data-action="next" data-id="${escapeHtml(task.id)}" title="상태 변경">상태</button><button class="danger" type="button" data-action="delete" data-id="${escapeHtml(task.id)}" title="삭제">삭제</button></div></td></tr>`).join(""); }
+    function resetForm() { elements.form.reset(); elements.taskId.value = ""; elements.formTitle.textContent = "업무 등록"; elements.taskStatus.value = "todo"; elements.taskPriority.value = "2"; elements.taskDue.value = toInputDate(dateFromWeek(elements.weekInput.value)); }
+    function exportCsv() { const header = ["업무명", "담당자", "마감일", "상태", "우선순위", "메모"]; const rows = filteredTasks().map((task) => [task.title, task.owner, task.due, statusLabel[task.status], priorityLabel[task.priority], task.memo]); const csv = [header, ...rows].map((row) => row.map((cell) => `"${String(cell || "").replaceAll('"', '""')}"`).join(",")).join("\n"); const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8" }); const url = URL.createObjectURL(blob); const link = document.createElement("a"); link.href = url; link.download = `weekly-work-${elements.weekInput.value}.csv`; link.click(); URL.revokeObjectURL(url); }
+    elements.weekInput.value = toWeekValue(new Date()); resetForm();
+    document.querySelectorAll(".nav-button").forEach((button) => button.addEventListener("click", () => { document.querySelectorAll(".nav-button").forEach((item) => item.classList.remove("active")); button.classList.add("active"); activeFilter = button.dataset.filter; render(); }));
+    [elements.weekInput, elements.searchInput, elements.ownerFilter, elements.sortSelect].forEach((element) => { element.addEventListener("input", render); element.addEventListener("change", render); });
+    elements.taskBody.addEventListener("click", async (event) => { if (busy) return; const button = event.target.closest("button"); if (!button) return; const task = tasks.find((item) => item.id === button.dataset.id); if (!task) return; if (button.dataset.action === "edit") { elements.taskId.value = task.id; elements.taskTitle.value = task.title; elements.taskOwner.value = task.owner; elements.taskDue.value = task.due; elements.taskStatus.value = task.status; elements.taskPriority.value = task.priority; elements.taskMemo.value = task.memo; elements.formTitle.textContent = "업무 수정"; } if (button.dataset.action === "next") await updateTaskStatus(task); if (button.dataset.action === "delete" && confirm("선택한 업무를 삭제할까요?")) await deleteTask(task.id); });
+    elements.form.addEventListener("submit", async (event) => { event.preventDefault(); if (busy) return; const payload = { id: elements.taskId.value, title: elements.taskTitle.value.trim(), owner: elements.taskOwner.value.trim(), due: elements.taskDue.value, status: elements.taskStatus.value, priority: elements.taskPriority.value, memo: elements.taskMemo.value.trim() }; await saveTask(payload); resetForm(); });
+    elements.resetButton.addEventListener("click", resetForm); elements.refreshButton.addEventListener("click", loadTasks); elements.exportButton.addEventListener("click", exportCsv); loadTasks();
+  </script>
+</body>
+</html>
