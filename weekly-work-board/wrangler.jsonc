@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "logos-weekly-work-board",
+  "compatibility_date": "2026-07-09",
+  "pages_build_output_dir": "."
+}
