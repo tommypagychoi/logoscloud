@@ -14,7 +14,7 @@
 
 - 웹앱: Next.js
 - 인증/DB: Supabase
-- 배포: Vercel 또는 Cloudflare Pages
+- 배포: GitHub Pages, Vercel 또는 Cloudflare Pages
 - 도메인: `logoscloud.co.kr` DNS에서 배포 서비스로 연결
 
 ## Supabase 설정
@@ -40,7 +40,30 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-## 배포
+## GitHub Pages 배포
+
+이 저장소는 `main` 브랜치에 push되면 GitHub Actions가 Next.js 정적 사이트를 빌드해서 GitHub Pages에 배포합니다.
+
+GitHub 저장소에서 한 번만 설정하세요.
+
+1. Repository Settings > Pages로 이동합니다.
+2. Build and deployment Source를 `GitHub Actions`로 선택합니다.
+3. Custom domain에 `www.logoscloud.co.kr`을 입력하고 저장합니다.
+4. HTTPS 인증서 발급이 끝나면 Enforce HTTPS를 켭니다.
+
+도메인 DNS는 현재 `whoisdomain.kr` 포워딩 IP로 되어 있으므로 아래처럼 바꿔야 합니다.
+
+| 이름 | 유형 | 값 |
+| --- | --- | --- |
+| `@` | `A` | `185.199.108.153` |
+| `@` | `A` | `185.199.109.153` |
+| `@` | `A` | `185.199.110.153` |
+| `@` | `A` | `185.199.111.153` |
+| `www` | `CNAME` | `tommypagychoi.github.io` |
+
+기존 `@`와 `www`의 `118.67.131.217` A 레코드 또는 포워딩 설정은 삭제합니다.
+
+## Vercel 배포
 
 1. GitHub 저장소에 이 폴더를 올립니다.
 2. Vercel에서 저장소를 Import합니다.
