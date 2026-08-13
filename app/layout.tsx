@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.logoscloud.com"),
-  title: "Logos Cloud | 기업 로고 디자인 스튜디오",
-  description: "기업 로고, 브랜드 시스템, 명함과 SNS 적용 이미지까지 제작하는 Logos Cloud 공식 홈페이지",
+  metadataBase: new URL("https://www.logoscloud.kr"),
+  title: "Logos Cloud | 멀티 클라우드 AI 운영 전문 기업",
+  description: "멀티 클라우드 운영과 구축, AI 기반 인프라 혁신, Kubernetes 전문 역량을 제공하는 Logos Cloud 공식 홈페이지",
   openGraph: {
     title: "Logos Cloud",
-    description: "기업의 첫인상을 설계하는 로고 디자인 파트너",
-    url: "https://www.logoscloud.com",
+    description: "멀티 클라우드 운영과 구축을 이끄는 AI 선도 그룹",
+    url: "https://www.logoscloud.kr",
     siteName: "Logos Cloud",
     images: [
       {
-        url: "/logoscloud-brand-studio.jpg",
-        width: 640,
-        height: 427,
-        alt: "Logos Cloud 브랜드 디자인 스튜디오"
+        url: "/logoscloud-cloud-ai-hero.svg",
+        width: 1600,
+        height: 900,
+        alt: "Logos Cloud 멀티 클라우드 AI 운영 센터"
       }
     ],
     locale: "ko_KR",
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Logos Cloud",
-    description: "기업의 첫인상을 설계하는 로고 디자인 파트너",
-    images: ["/logoscloud-brand-studio.jpg"]
+    description: "멀티 클라우드 운영과 구축을 이끄는 AI 선도 그룹",
+    images: ["/logoscloud-cloud-ai-hero.svg"]
   }
 };
 
