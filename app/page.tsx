@@ -165,7 +165,7 @@ export default function Home() {
           <p className="section-kicker">StoryRoom Builder</p>
           <h2>Codex 계정과 프롬프트로 영상 스토리룸을 만드는 화면</h2>
           <p>
-            PDF 업로드 없이, 내 Codex 계정에서 작업하듯 프롬프트를 입력해 영상 목적과 톤을 정합니다.
+            내 Codex 계정에서 작업하듯 프롬프트를 입력해 영상 목적과 톤을 정합니다.
             StoryRoom은 핵심 메시지, 장면 흐름, 내레이션 방향을 정리해 제품 소개나 교육 영상 제작으로 연결합니다.
           </p>
           <a className="primary-link storyroom-link" href={contactUrl} target="_blank" rel="noreferrer">
