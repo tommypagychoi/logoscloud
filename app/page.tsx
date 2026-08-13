@@ -1,6 +1,5 @@
 import Image from "next/image";
 import {
-  ArrowRight,
   BadgeCheck,
   BrainCircuit,
   Building2,
@@ -9,16 +8,14 @@ import {
   ExternalLink,
   Film,
   Mail,
-  MessageSquare,
   Network,
   Play,
-  Send,
   ServerCog,
   Sparkles,
   Target,
-  UserRoundCheck,
   Workflow
 } from "lucide-react";
+import StoryroomBuilder from "./storyroom-builder";
 
 const contactUrl = "https://tosky.co.kr/ko/contact/";
 
@@ -43,7 +40,7 @@ const services = [
 const process = [
   "Codex 계정 선택",
   "프롬프트 입력",
-  "스토리 구성 생성",
+  "영상 생성",
   "영상 제작 문의"
 ];
 
@@ -124,7 +121,7 @@ export default function Home() {
         </div>
         <div>
           <strong>Video</strong>
-          <span>영상 스토리 구성 생성</span>
+          <span>영상 미리보기 생성</span>
         </div>
       </section>
 
@@ -135,7 +132,7 @@ export default function Home() {
         </div>
         <p>
           설명하고 싶은 제품, 서비스, 교육 내용을 프롬프트로 입력하면 StoryRoom이 핵심 메시지와 장면 흐름,
-          내레이션 방향을 구성합니다. Logos Cloud는 Codex 계정 기반의 프롬프트 경험을 영상 제작 화면으로 확장합니다.
+          내레이션 방향을 구성하고 움직이는 영상 미리보기로 보여줍니다. Logos Cloud는 Codex 계정 기반의 프롬프트 경험을 영상 제작 화면으로 확장합니다.
         </p>
       </section>
 
@@ -163,10 +160,10 @@ export default function Home() {
       <section className="storyroom-section" id="storyroom">
         <div className="storyroom-copy">
           <p className="section-kicker">StoryRoom Builder</p>
-          <h2>Codex 계정과 프롬프트로 영상 스토리룸을 만드는 화면</h2>
+          <h2>프롬프트를 입력하면 영상 미리보기가 바로 생성됩니다.</h2>
           <p>
-            내 Codex 계정에서 작업하듯 프롬프트를 입력해 영상 목적과 톤을 정합니다.
-            StoryRoom은 핵심 메시지, 장면 흐름, 내레이션 방향을 정리해 제품 소개나 교육 영상 제작으로 연결합니다.
+            내 Codex 계정에서 작업하듯 프롬프트를 입력하고 영상 생성 버튼을 누르면,
+            StoryRoom이 장면 흐름과 내레이션 방향을 만들고 움직이는 영상 미리보기로 보여줍니다.
           </p>
           <a className="primary-link storyroom-link" href={contactUrl} target="_blank" rel="noreferrer">
             제품 도입 문의
@@ -174,37 +171,7 @@ export default function Home() {
           </a>
         </div>
 
-        <form className="storyroom-panel" aria-label="AI 영상 스토리룸 제작 입력창">
-          <div className="account-box">
-            <UserRoundCheck size={28} />
-            <div>
-              <strong>Codex 계정으로 스토리 구성</strong>
-              <span>나의 Codex 프롬프트 작업 방식에 맞춰 영상 스토리룸을 구성합니다.</span>
-            </div>
-          </div>
-
-          <label className="prompt-box">
-            <span>
-              <MessageSquare size={18} />
-              스토리 구성 생성 프롬프트
-            </span>
-            <textarea
-              rows={9}
-              placeholder="예: Kubernetes 기반 멀티 클라우드 운영 서비스를 90초 B2B 소개 영상으로 만들고, 신뢰감 있는 톤으로 장면 5개와 내레이션을 구성해줘."
-            />
-          </label>
-
-          <div className="builder-actions">
-            <button type="button">
-              <Sparkles size={18} />
-              스토리 구성 생성
-            </button>
-            <a href={contactUrl} target="_blank" rel="noreferrer">
-              <Send size={18} />
-              영상 제작 문의
-            </a>
-          </div>
-        </form>
+        <StoryroomBuilder contactUrl={contactUrl} />
       </section>
 
       <section className="story-preview" aria-label="영상 스토리룸 미리보기">
@@ -230,8 +197,8 @@ export default function Home() {
           </article>
           <article>
             <span>03</span>
-            <h3>내레이션 초안</h3>
-            <p>영상 길이와 목적에 맞춘 내레이션 방향을 생성합니다.</p>
+            <h3>영상 미리보기 생성</h3>
+            <p>영상 길이와 목적에 맞춘 움직이는 미리보기와 내레이션 방향을 생성합니다.</p>
           </article>
         </div>
       </section>
@@ -270,7 +237,7 @@ export default function Home() {
               <p>
                 {index === 0 && "내 Codex 계정 기반으로 사용할 프롬프트 작업 환경을 선택합니다."}
                 {index === 1 && "영상 목적, 대상 고객, 톤앤매너, 분량을 프롬프트로 입력합니다."}
-                {index === 2 && "핵심 메시지와 장면 흐름, 내레이션 방향을 스토리룸으로 구성합니다."}
+                {index === 2 && "핵심 메시지와 장면 흐름을 만들고 움직이는 영상 미리보기로 확인합니다."}
                 {index === 3 && "구체적인 제작 범위는 제품 도입 문의 페이지에서 상담으로 연결합니다."}
               </p>
             </article>
