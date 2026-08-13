@@ -62,7 +62,8 @@ select {
 .contact-box a,
 .contact-box span,
 .site-footer span,
-.builder-actions {
+.builder-actions,
+.account-box {
   display: flex;
   align-items: center;
 }
@@ -233,6 +234,7 @@ h1 {
 .proof-strip span,
 .section p,
 .storyroom-copy p,
+.account-box span,
 .feature-copy p,
 .package-card p,
 .process-list p,
@@ -364,33 +366,32 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.upload-box,
+.account-box,
 .prompt-box {
-  display: grid;
-  gap: 10px;
+  gap: 12px;
   border-radius: 8px;
 }
 
-.upload-box {
-  place-items: center;
-  min-height: 190px;
-  padding: 22px;
-  border: 1px dashed #8ab6d6;
+.account-box {
+  min-height: 92px;
+  padding: 18px;
+  border: 1px solid #c7d7ee;
   color: #344054;
-  text-align: center;
   background: #f8fbff;
 }
 
-.upload-box svg {
+.account-box svg {
+  flex: 0 0 auto;
   color: var(--blue);
 }
 
-.upload-box input {
-  width: min(100%, 360px);
-  padding: 10px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fff;
+.account-box div {
+  display: grid;
+  gap: 3px;
+}
+
+.prompt-box {
+  display: grid;
 }
 
 .prompt-box span {
@@ -403,7 +404,7 @@ h3 {
 
 .prompt-box textarea {
   width: 100%;
-  min-height: 170px;
+  min-height: 220px;
   resize: vertical;
   padding: 14px;
   border: 1px solid var(--line);
