@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.logoscloud.kr"),
-  title: "Logos Cloud | 멀티 클라우드 AI 운영 전문 기업",
-  description: "멀티 클라우드 운영과 구축, AI 기반 인프라 혁신, Kubernetes 전문 역량을 제공하는 Logos Cloud 공식 홈페이지",
+  title: "Logos Cloud | AI 영상 스토리룸과 멀티 클라우드 운영",
+  description: "PDF와 업무 자료를 업로드하고 프롬프트로 AI 영상 스토리룸을 설계하는 Logos Cloud 공식 홈페이지",
   openGraph: {
     title: "Logos Cloud",
-    description: "멀티 클라우드 운영과 구축을 이끄는 AI 선도 그룹",
+    description: "멀티 클라우드 운영과 AI 영상 스토리룸 구축을 지원합니다.",
     url: "https://www.logoscloud.kr",
     siteName: "Logos Cloud",
     images: [
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
         url: "/logoscloud-cloud-ai-hero.svg",
         width: 1600,
         height: 900,
-        alt: "Logos Cloud 멀티 클라우드 AI 운영 센터"
+        alt: "Logos Cloud AI 영상 스토리룸과 멀티 클라우드 운영 화면"
       }
     ],
     locale: "ko_KR",
@@ -24,8 +24,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Logos Cloud",
-    description: "멀티 클라우드 운영과 구축을 이끄는 AI 선도 그룹",
+    description: "PDF 자료와 프롬프트로 AI 영상 스토리룸을 설계합니다.",
     images: ["/logoscloud-cloud-ai-hero.svg"]
+  },
+  alternates: {
+    canonical: "https://www.logoscloud.kr"
   }
 };
 
@@ -36,7 +39,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                var canonicalHost = "www.logoscloud.kr";
+                if (location.hostname && location.hostname !== canonicalHost && location.hostname !== "localhost") {
+                  location.replace("https://" + canonicalHost + location.pathname + location.search + location.hash);
+                }
+              })();
+            `
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
