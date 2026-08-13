@@ -6,18 +6,21 @@ import {
   Building2,
   Check,
   Cloud,
-  Cpu,
-  DatabaseZap,
-  Gem,
-  GitBranch,
+  ExternalLink,
+  FileText,
+  Film,
   Mail,
+  MessageSquare,
   Network,
+  Play,
+  Send,
   ServerCog,
-  ShieldCheck,
   Sparkles,
   Target,
   Workflow
 } from "lucide-react";
+
+const contactUrl = "https://tosky.co.kr/ko/contact/";
 
 const services = [
   {
@@ -27,24 +30,24 @@ const services = [
   },
   {
     icon: BrainCircuit,
-    title: "AI 인프라 선도 전략",
-    description: "AI 서비스가 빠르게 확장될 수 있도록 데이터, 모델, GPU, 자동화 운영 기반을 함께 설계합니다."
+    title: "AI Agent 서비스 빌더",
+    description: "업무 데이터와 프롬프트를 연결해 기업 환경에 맞는 AI Agent와 자동화 서비스를 설계합니다."
   },
   {
-    icon: ServerCog,
-    title: "K8S 전문 집단",
-    description: "Kubernetes 플랫폼, GitOps, 모니터링, 보안 정책까지 실전 경험을 갖춘 전문가가 구축합니다."
+    icon: Film,
+    title: "AI 영상 스토리룸",
+    description: "PDF, 제안서, 교육자료를 업로드하고 프롬프트로 영상 스토리와 장면 구성을 빠르게 만듭니다."
   }
 ];
 
 const process = [
-  "클라우드 현황 진단",
-  "목표 아키텍처 설계",
-  "K8S와 AI 운영 자동화",
-  "관제와 지속 개선"
+  "자료 업로드",
+  "프롬프트 설계",
+  "스토리보드 생성",
+  "영상 제작 문의"
 ];
 
-const packages = [
+const capabilities = [
   {
     name: "Multi Cloud",
     target: "멀티 클라우드 cloud",
@@ -53,12 +56,12 @@ const packages = [
   {
     name: "AI Leading",
     target: "AI 선두를 이끌어 가는 기업",
-    items: ["AI 인프라 전략", "데이터/모델 운영 기반", "자동화와 성능 최적화"]
+    items: ["AI Agent 전략", "Knowledge 기반 구축", "프롬프트 워크플로우 설계"]
   },
   {
-    name: "K8S Expert",
-    target: "K8S 전문 집단 전문가 구성",
-    items: ["Kubernetes 플랫폼 구축", "GitOps 배포 체계", "보안/모니터링 표준화"]
+    name: "StoryRoom",
+    target: "PDF 자료를 영상 스토리로 전환",
+    items: ["문서 요약", "장면 구성", "영상 제작 도입 문의"]
   }
 ];
 
@@ -74,8 +77,8 @@ export default function Home() {
         </a>
         <nav aria-label="주요 메뉴">
           <a href="#services">서비스</a>
+          <a href="#storyroom">StoryRoom</a>
           <a href="#process">프로세스</a>
-          <a href="#packages">역량</a>
           <a href="#contact">문의</a>
         </nav>
       </header>
@@ -84,7 +87,7 @@ export default function Home() {
         <Image
           className="hero-image"
           src="/logoscloud-cloud-ai-hero.svg"
-          alt="멀티 클라우드와 AI 운영 대시보드가 보이는 관제 센터"
+          alt="AI 영상 스토리룸과 멀티 클라우드 운영 대시보드"
           fill
           priority
           sizes="100vw"
@@ -93,53 +96,53 @@ export default function Home() {
         <div className="hero-content">
           <p className="eyebrow">
             <Sparkles size={16} />
-            Multi Cloud · AI · Kubernetes
+            AI Service Builder · StoryRoom · Multi Cloud
           </p>
-          <h1>멀티 클라우드 운영과 AI 혁신을 이끄는 Logos Cloud</h1>
+          <h1>문서를 AI 영상 스토리룸으로 바꾸는 클라우드 플랫폼</h1>
           <p className="hero-copy">
-            Logos Cloud는 멀티 클라우드 운영과 구축, AI 기반 인프라 혁신, Kubernetes 플랫폼 전문성을
-            하나로 연결해 기업의 클라우드 전환과 안정적인 운영을 지원합니다.
+            Logos Cloud는 PDF와 업무 자료를 업로드하고 프롬프트를 입력해 영상 스토리 구성까지 이어지는
+            AI Service Builder 화면을 제공합니다. 멀티 클라우드 운영과 AI 구축 역량으로 기업의 AX 전환을 지원합니다.
           </p>
           <div className="hero-actions">
-            <a className="primary-link" href="#contact">
-              프로젝트 문의
-              <ArrowRight size={18} />
+            <a className="primary-link" href={contactUrl} target="_blank" rel="noreferrer">
+              제품 도입 문의
+              <ExternalLink size={18} />
             </a>
-            <a className="secondary-link" href="#packages">핵심 역량 보기</a>
+            <a className="secondary-link" href="#storyroom">StoryRoom 체험 화면</a>
           </div>
         </div>
       </section>
 
       <section className="proof-strip" aria-label="핵심 강점">
         <div>
-          <strong>Multi</strong>
-          <span>퍼블릭·프라이빗 클라우드 통합 운영</span>
+          <strong>PDF</strong>
+          <span>파일 업로드 기반 영상 기획</span>
         </div>
         <div>
-          <strong>AI</strong>
-          <span>AI 선두를 이끌어 가는 인프라 전략</span>
+          <strong>Prompt</strong>
+          <span>프롬프트로 장면과 톤 설정</span>
         </div>
         <div>
-          <strong>K8S</strong>
-          <span>Kubernetes 전문가 중심 구성</span>
+          <strong>Cloud</strong>
+          <span>멀티 클라우드와 AI 운영 기반</span>
         </div>
       </section>
 
       <section className="section intro-section">
         <div>
           <p className="section-kicker">Why Logos Cloud</p>
-          <h2>복잡한 클라우드 환경을 하나의 운영 전략으로 정리합니다.</h2>
+          <h2>자료를 올리고 원하는 방향을 입력하면 영상 스토리가 시작됩니다.</h2>
         </div>
         <p>
-          기업의 클라우드는 단일 플랫폼에서 끝나지 않습니다. Logos Cloud는 멀티 클라우드, AI 워크로드,
-          Kubernetes 운영을 함께 바라보며 구축 이후에도 지속 가능한 표준과 자동화 체계를 만듭니다.
+          제안서, 제품소개서, 교육자료처럼 이미 만들어둔 문서를 다시 영상으로 설명해야 할 때가 많습니다.
+          Logos Cloud는 자료 업로드, 프롬프트 입력, 장면 설계, 제작 문의까지 한 화면에서 이어지는 StoryRoom 경험을 제공합니다.
         </p>
       </section>
 
       <section className="section" id="services">
         <div className="section-head">
           <p className="section-kicker">Services</p>
-          <h2>멀티 클라우드 운영과 AI 전환에 필요한 핵심 서비스</h2>
+          <h2>AI 영상 제작과 클라우드 운영에 필요한 핵심 서비스</h2>
         </div>
         <div className="service-grid">
           {services.map((service) => {
@@ -157,13 +160,87 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="storyroom-section" id="storyroom">
+        <div className="storyroom-copy">
+          <p className="section-kicker">StoryRoom Builder</p>
+          <h2>PDF 파일과 프롬프트로 영상 스토리룸을 만드는 화면</h2>
+          <p>
+            사용자는 보통 PDF 같은 파일을 업로드하고, 원하는 영상 목적과 톤을 프롬프트로 입력합니다.
+            StoryRoom은 핵심 메시지, 장면 흐름, 내레이션 방향을 정리해 제품 소개나 교육 영상 제작으로 연결합니다.
+          </p>
+          <a className="primary-link storyroom-link" href={contactUrl} target="_blank" rel="noreferrer">
+            제품 도입 문의
+            <ExternalLink size={18} />
+          </a>
+        </div>
+
+        <form className="storyroom-panel" aria-label="AI 영상 스토리룸 제작 입력창">
+          <div className="upload-box">
+            <FileText size={34} />
+            <strong>PDF 또는 업무 자료 업로드</strong>
+            <span>PDF, PPT, DOC, TXT 파일을 기반으로 영상 스토리를 구성합니다.</span>
+            <input type="file" accept=".pdf,.ppt,.pptx,.doc,.docx,.txt" aria-label="파일 업로드" />
+          </div>
+
+          <label className="prompt-box">
+            <span>
+              <MessageSquare size={18} />
+              프롬프트 입력
+            </span>
+            <textarea
+              rows={7}
+              placeholder="예: 이 제품소개서를 90초 분량의 B2B 영업 영상으로 만들고, 신뢰감 있는 톤으로 핵심 장면 5개와 내레이션을 구성해줘."
+            />
+          </label>
+
+          <div className="builder-actions">
+            <button type="button">
+              <Sparkles size={18} />
+              스토리 구성 생성
+            </button>
+            <a href={contactUrl} target="_blank" rel="noreferrer">
+              <Send size={18} />
+              도입 문의로 연결
+            </a>
+          </div>
+        </form>
+      </section>
+
+      <section className="story-preview" aria-label="영상 스토리룸 미리보기">
+        <div className="preview-player">
+          <span className="play-mark">
+            <Play size={30} fill="currentColor" />
+          </span>
+          <div>
+            <p className="section-kicker">Generated Story</p>
+            <h2>업로드 문서 기반 영상 시나리오 미리보기</h2>
+          </div>
+        </div>
+        <div className="scene-list">
+          <article>
+            <span>01</span>
+            <h3>문제 정의</h3>
+            <p>업로드한 PDF에서 고객의 핵심 문제와 시장 배경을 추출합니다.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>솔루션 소개</h3>
+            <p>제품 강점과 차별점을 영상 장면 단위로 정리합니다.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>도입 효과</h3>
+            <p>비즈니스 성과, 운영 효율, AI 활용 가치를 설득력 있게 구성합니다.</p>
+          </article>
+        </div>
+      </section>
+
       <section className="feature-band">
         <div className="feature-copy">
           <p className="section-kicker">Cloud Operating Model</p>
-          <h2>구축, 자동화, 관제, 최적화를 하나의 흐름으로 연결합니다.</h2>
+          <h2>StoryRoom 뒤에는 안정적인 멀티 클라우드와 AI 운영 기반이 필요합니다.</h2>
           <p>
-            클라우드 리소스, 컨테이너 플랫폼, AI 운영 환경을 표준화해 장애 대응과 비용 최적화,
-            보안 운영이 반복 가능한 체계로 움직이도록 설계합니다.
+            클라우드 리소스, 컨테이너 플랫폼, AI 운영 환경을 표준화해 기업형 AI 서비스를 안정적으로 확장할 수 있게 설계합니다.
           </p>
         </div>
         <div className="brand-board" aria-label="클라우드 운영 구성 요소">
@@ -171,9 +248,9 @@ export default function Home() {
             <Network size={34} />
             <span>Multi Cloud</span>
           </div>
-          <div className="board-tile blue">AI Ops</div>
-          <div className="board-tile teal">K8S</div>
-          <div className="board-tile yellow">GitOps</div>
+          <div className="board-tile blue">AI Agent</div>
+          <div className="board-tile teal">StoryRoom</div>
+          <div className="board-tile yellow">K8S</div>
           <div className="board-tile wide">Logos Cloud</div>
           <div className="board-tile line">Secure Operations</div>
         </div>
@@ -182,7 +259,7 @@ export default function Home() {
       <section className="section" id="process">
         <div className="section-head">
           <p className="section-kicker">Process</p>
-          <h2>현황 진단부터 운영 고도화까지 이어지는 실행 흐름</h2>
+          <h2>자료 업로드부터 영상 제작 문의까지 이어지는 흐름</h2>
         </div>
         <div className="process-list">
           {process.map((item, index) => (
@@ -190,10 +267,10 @@ export default function Home() {
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{item}</h3>
               <p>
-                {index === 0 && "현재 인프라, 비용, 보안, 운영 병목을 빠르게 파악합니다."}
-                {index === 1 && "비즈니스 목표에 맞는 멀티 클라우드와 네트워크 구조를 설계합니다."}
-                {index === 2 && "Kubernetes와 AI 운영을 자동화해 배포와 확장을 표준화합니다."}
-                {index === 3 && "관제, 장애 대응, 비용 최적화를 지속적으로 개선합니다."}
+                {index === 0 && "PDF, 제안서, 교육자료 등 영상으로 바꿀 원본 파일을 업로드합니다."}
+                {index === 1 && "영상 목적, 대상 고객, 톤앤매너, 분량을 프롬프트로 입력합니다."}
+                {index === 2 && "핵심 메시지와 장면 흐름, 내레이션 방향을 스토리룸으로 구성합니다."}
+                {index === 3 && "구체적인 제작 범위는 제품 도입 문의 페이지에서 상담으로 연결합니다."}
               </p>
             </article>
           ))}
@@ -203,13 +280,13 @@ export default function Home() {
       <section className="section" id="packages">
         <div className="section-head">
           <p className="section-kicker">Capabilities</p>
-          <h2>사업 단계에 맞춰 선택하는 브랜드 제작 범위</h2>
+          <h2>사업 단계에 맞춰 선택하는 AI 도입 범위</h2>
         </div>
         <div className="package-grid">
-          {packages.map((item) => (
+          {capabilities.map((item) => (
             <article className="package-card" key={item.name}>
               <div>
-                <Gem size={22} />
+                <ServerCog size={22} />
                 <h3>{item.name}</h3>
               </div>
               <p>{item.target}</p>
@@ -226,56 +303,30 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section tech-section" aria-label="운영 전문 영역">
-        <div className="section-head">
-          <p className="section-kicker">Expertise</p>
-          <h2>클라우드 운영팀이 바로 필요로 하는 전문 영역</h2>
-        </div>
-        <div className="tech-grid">
-          <article>
-            <Cpu size={24} />
-            <h3>AI 워크로드 인프라</h3>
-            <p>GPU, 데이터 파이프라인, 모델 서빙 환경을 운영 관점에서 설계합니다.</p>
-          </article>
-          <article>
-            <GitBranch size={24} />
-            <h3>GitOps 기반 배포</h3>
-            <p>변경 이력과 배포 상태를 추적 가능한 구조로 표준화합니다.</p>
-          </article>
-          <article>
-            <ShieldCheck size={24} />
-            <h3>보안과 거버넌스</h3>
-            <p>권한, 정책, 감사, 네트워크 보안을 운영 프로세스 안에 녹입니다.</p>
-          </article>
-          <article>
-            <DatabaseZap size={24} />
-            <h3>관제와 비용 최적화</h3>
-            <p>사용량, 성능, 장애 징후를 빠르게 보고 개선할 수 있게 만듭니다.</p>
-          </article>
-        </div>
-      </section>
-
       <section className="cta-section" id="contact">
         <div>
           <p className="section-kicker">Contact</p>
-          <h2>멀티 클라우드와 AI 운영 전환을 함께 설계하겠습니다.</h2>
+          <h2>AI 영상 스토리룸과 멀티 클라우드 도입을 함께 설계하겠습니다.</h2>
           <p>
-            현재 클라우드 환경, 목표 아키텍처, AI 또는 Kubernetes 운영 과제를 보내주시면
-            필요한 구축 범위와 실행 일정을 정리해드립니다.
+            현재 보유한 PDF 자료, 만들고 싶은 영상 목적, 클라우드 운영 환경을 보내주시면 필요한 구축 범위와 도입 일정을 정리해드립니다.
           </p>
         </div>
         <div className="contact-box">
-          <a href="mailto:kjy5894@logos.co.kr">
+          <a href="mailto:kjy5894@logosin.co.kr">
             <Mail size={20} />
-            kjy5894@logos.co.kr
+            kjy5894@logosin.co.kr
+          </a>
+          <a href={contactUrl} target="_blank" rel="noreferrer">
+            <ExternalLink size={20} />
+            제품 도입 문의
           </a>
           <span>
             <Building2 size={20} />
-            Multi cloud and AI infrastructure
+            AI video StoryRoom and multi cloud
           </span>
           <span>
             <Target size={20} />
-            클라우드 운영, 구축, 전환, 고도화
+            PDF 기반 영상 기획, AI Agent, K8S 운영
           </span>
           <span>
             <Workflow size={20} />
@@ -286,7 +337,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <strong>Logos Cloud</strong>
-        <span>© 2026 Logos Cloud. Multi cloud, AI and Kubernetes operations.</span>
+        <span>© 2026 Logos Cloud. AI StoryRoom, multi cloud and Kubernetes operations.</span>
         <span>
           <BadgeCheck size={16} />
           www.logoscloud.kr
