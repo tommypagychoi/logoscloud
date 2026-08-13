@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { MessageSquare, Play, Send, Sparkles, UserRoundCheck, WandSparkles } from "lucide-react";
+import "./storyroom-builder.module.css";
 
 type StoryroomBuilderProps = {
   contactUrl: string;
