@@ -7,7 +7,6 @@ import {
   Check,
   Cloud,
   ExternalLink,
-  FileText,
   Film,
   Mail,
   MessageSquare,
@@ -17,6 +16,7 @@ import {
   ServerCog,
   Sparkles,
   Target,
+  UserRoundCheck,
   Workflow
 } from "lucide-react";
 
@@ -31,19 +31,19 @@ const services = [
   {
     icon: BrainCircuit,
     title: "AI Agent 서비스 빌더",
-    description: "업무 데이터와 프롬프트를 연결해 기업 환경에 맞는 AI Agent와 자동화 서비스를 설계합니다."
+    description: "Codex 계정 기반 프롬프트를 기업 업무 흐름과 연결해 AI Agent와 자동화 서비스를 설계합니다."
   },
   {
     icon: Film,
     title: "AI 영상 스토리룸",
-    description: "PDF, 제안서, 교육자료를 업로드하고 프롬프트로 영상 스토리와 장면 구성을 빠르게 만듭니다."
+    description: "프롬프트만 입력해 영상 목적, 장면 구성, 내레이션 방향까지 빠르게 스토리룸으로 만듭니다."
   }
 ];
 
 const process = [
-  "자료 업로드",
-  "프롬프트 설계",
-  "스토리보드 생성",
+  "Codex 계정 선택",
+  "프롬프트 입력",
+  "스토리 구성 생성",
   "영상 제작 문의"
 ];
 
@@ -60,8 +60,8 @@ const capabilities = [
   },
   {
     name: "StoryRoom",
-    target: "PDF 자료를 영상 스토리로 전환",
-    items: ["문서 요약", "장면 구성", "영상 제작 도입 문의"]
+    target: "프롬프트를 영상 스토리로 전환",
+    items: ["장면 구성", "내레이션 방향", "영상 제작 도입 문의"]
   }
 ];
 
@@ -96,12 +96,12 @@ export default function Home() {
         <div className="hero-content">
           <p className="eyebrow">
             <Sparkles size={16} />
-            AI Service Builder · StoryRoom · Multi Cloud
+            Codex Prompt · AI StoryRoom · Multi Cloud
           </p>
-          <h1>문서를 AI 영상 스토리룸으로 바꾸는 클라우드 플랫폼</h1>
+          <h1>Codex 계정의 프롬프트로 영상 스토리룸을 만드는 플랫폼</h1>
           <p className="hero-copy">
-            Logos Cloud는 PDF와 업무 자료를 업로드하고 프롬프트를 입력해 영상 스토리 구성까지 이어지는
-            AI Service Builder 화면을 제공합니다. 멀티 클라우드 운영과 AI 구축 역량으로 기업의 AX 전환을 지원합니다.
+            Logos Cloud는 나의 Codex 계정에서 사용하는 프롬프트 흐름을 기준으로 영상 목적, 장면 구성,
+            내레이션 방향을 설계하는 AI StoryRoom 화면을 제공합니다. 멀티 클라우드 운영과 AI 구축 역량으로 기업의 AX 전환을 지원합니다.
           </p>
           <div className="hero-actions">
             <a className="primary-link" href={contactUrl} target="_blank" rel="noreferrer">
@@ -115,27 +115,27 @@ export default function Home() {
 
       <section className="proof-strip" aria-label="핵심 강점">
         <div>
-          <strong>PDF</strong>
-          <span>파일 업로드 기반 영상 기획</span>
+          <strong>Codex</strong>
+          <span>내 계정 기반 프롬프트 흐름</span>
         </div>
         <div>
           <strong>Prompt</strong>
           <span>프롬프트로 장면과 톤 설정</span>
         </div>
         <div>
-          <strong>Cloud</strong>
-          <span>멀티 클라우드와 AI 운영 기반</span>
+          <strong>Video</strong>
+          <span>영상 스토리 구성 생성</span>
         </div>
       </section>
 
       <section className="section intro-section">
         <div>
           <p className="section-kicker">Why Logos Cloud</p>
-          <h2>자료를 올리고 원하는 방향을 입력하면 영상 스토리가 시작됩니다.</h2>
+          <h2>파일 업로드 없이 프롬프트만으로 영상 스토리가 시작됩니다.</h2>
         </div>
         <p>
-          제안서, 제품소개서, 교육자료처럼 이미 만들어둔 문서를 다시 영상으로 설명해야 할 때가 많습니다.
-          Logos Cloud는 자료 업로드, 프롬프트 입력, 장면 설계, 제작 문의까지 한 화면에서 이어지는 StoryRoom 경험을 제공합니다.
+          설명하고 싶은 제품, 서비스, 교육 내용을 프롬프트로 입력하면 StoryRoom이 핵심 메시지와 장면 흐름,
+          내레이션 방향을 구성합니다. Logos Cloud는 Codex 계정 기반의 프롬프트 경험을 영상 제작 화면으로 확장합니다.
         </p>
       </section>
 
@@ -163,9 +163,9 @@ export default function Home() {
       <section className="storyroom-section" id="storyroom">
         <div className="storyroom-copy">
           <p className="section-kicker">StoryRoom Builder</p>
-          <h2>PDF 파일과 프롬프트로 영상 스토리룸을 만드는 화면</h2>
+          <h2>Codex 계정과 프롬프트로 영상 스토리룸을 만드는 화면</h2>
           <p>
-            사용자는 보통 PDF 같은 파일을 업로드하고, 원하는 영상 목적과 톤을 프롬프트로 입력합니다.
+            PDF 업로드 없이, 내 Codex 계정에서 작업하듯 프롬프트를 입력해 영상 목적과 톤을 정합니다.
             StoryRoom은 핵심 메시지, 장면 흐름, 내레이션 방향을 정리해 제품 소개나 교육 영상 제작으로 연결합니다.
           </p>
           <a className="primary-link storyroom-link" href={contactUrl} target="_blank" rel="noreferrer">
@@ -175,21 +175,22 @@ export default function Home() {
         </div>
 
         <form className="storyroom-panel" aria-label="AI 영상 스토리룸 제작 입력창">
-          <div className="upload-box">
-            <FileText size={34} />
-            <strong>PDF 또는 업무 자료 업로드</strong>
-            <span>PDF, PPT, DOC, TXT 파일을 기반으로 영상 스토리를 구성합니다.</span>
-            <input type="file" accept=".pdf,.ppt,.pptx,.doc,.docx,.txt" aria-label="파일 업로드" />
+          <div className="account-box">
+            <UserRoundCheck size={28} />
+            <div>
+              <strong>Codex 계정으로 스토리 구성</strong>
+              <span>나의 Codex 프롬프트 작업 방식에 맞춰 영상 스토리룸을 구성합니다.</span>
+            </div>
           </div>
 
           <label className="prompt-box">
             <span>
               <MessageSquare size={18} />
-              프롬프트 입력
+              스토리 구성 생성 프롬프트
             </span>
             <textarea
-              rows={7}
-              placeholder="예: 이 제품소개서를 90초 분량의 B2B 영업 영상으로 만들고, 신뢰감 있는 톤으로 핵심 장면 5개와 내레이션을 구성해줘."
+              rows={9}
+              placeholder="예: Kubernetes 기반 멀티 클라우드 운영 서비스를 90초 B2B 소개 영상으로 만들고, 신뢰감 있는 톤으로 장면 5개와 내레이션을 구성해줘."
             />
           </label>
 
@@ -200,7 +201,7 @@ export default function Home() {
             </button>
             <a href={contactUrl} target="_blank" rel="noreferrer">
               <Send size={18} />
-              도입 문의로 연결
+              영상 제작 문의
             </a>
           </div>
         </form>
@@ -213,24 +214,24 @@ export default function Home() {
           </span>
           <div>
             <p className="section-kicker">Generated Story</p>
-            <h2>업로드 문서 기반 영상 시나리오 미리보기</h2>
+            <h2>프롬프트 기반 영상 시나리오 미리보기</h2>
           </div>
         </div>
         <div className="scene-list">
           <article>
             <span>01</span>
-            <h3>문제 정의</h3>
-            <p>업로드한 PDF에서 고객의 핵심 문제와 시장 배경을 추출합니다.</p>
+            <h3>영상 목적 정의</h3>
+            <p>입력한 프롬프트에서 대상 고객, 메시지, 영상 톤을 정리합니다.</p>
           </article>
           <article>
             <span>02</span>
-            <h3>솔루션 소개</h3>
-            <p>제품 강점과 차별점을 영상 장면 단위로 정리합니다.</p>
+            <h3>장면 구성</h3>
+            <p>핵심 내용을 장면 단위로 나누고 화면 흐름을 설계합니다.</p>
           </article>
           <article>
             <span>03</span>
-            <h3>도입 효과</h3>
-            <p>비즈니스 성과, 운영 효율, AI 활용 가치를 설득력 있게 구성합니다.</p>
+            <h3>내레이션 초안</h3>
+            <p>영상 길이와 목적에 맞춘 내레이션 방향을 생성합니다.</p>
           </article>
         </div>
       </section>
@@ -259,7 +260,7 @@ export default function Home() {
       <section className="section" id="process">
         <div className="section-head">
           <p className="section-kicker">Process</p>
-          <h2>자료 업로드부터 영상 제작 문의까지 이어지는 흐름</h2>
+          <h2>Codex 계정 선택부터 영상 제작 문의까지 이어지는 흐름</h2>
         </div>
         <div className="process-list">
           {process.map((item, index) => (
@@ -267,7 +268,7 @@ export default function Home() {
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{item}</h3>
               <p>
-                {index === 0 && "PDF, 제안서, 교육자료 등 영상으로 바꿀 원본 파일을 업로드합니다."}
+                {index === 0 && "내 Codex 계정 기반으로 사용할 프롬프트 작업 환경을 선택합니다."}
                 {index === 1 && "영상 목적, 대상 고객, 톤앤매너, 분량을 프롬프트로 입력합니다."}
                 {index === 2 && "핵심 메시지와 장면 흐름, 내레이션 방향을 스토리룸으로 구성합니다."}
                 {index === 3 && "구체적인 제작 범위는 제품 도입 문의 페이지에서 상담으로 연결합니다."}
@@ -308,7 +309,7 @@ export default function Home() {
           <p className="section-kicker">Contact</p>
           <h2>AI 영상 스토리룸과 멀티 클라우드 도입을 함께 설계하겠습니다.</h2>
           <p>
-            현재 보유한 PDF 자료, 만들고 싶은 영상 목적, 클라우드 운영 환경을 보내주시면 필요한 구축 범위와 도입 일정을 정리해드립니다.
+            만들고 싶은 영상 목적, 프롬프트 작업 방식, 클라우드 운영 환경을 보내주시면 필요한 구축 범위와 도입 일정을 정리해드립니다.
           </p>
         </div>
         <div className="contact-box">
@@ -326,7 +327,7 @@ export default function Home() {
           </span>
           <span>
             <Target size={20} />
-            PDF 기반 영상 기획, AI Agent, K8S 운영
+            프롬프트 기반 영상 기획, AI Agent, K8S 운영
           </span>
           <span>
             <Workflow size={20} />
@@ -340,7 +341,7 @@ export default function Home() {
         <span>© 2026 Logos Cloud. AI StoryRoom, multi cloud and Kubernetes operations.</span>
         <span>
           <BadgeCheck size={16} />
-          www.logoscloud.kr
+          www.logoscloud.co.kr
         </span>
       </footer>
     </main>
