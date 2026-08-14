@@ -1,22 +1,22 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import "./globals.css";
-import "./storyroom-builder.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.logoscloud.co.kr"),
-  title: "Logos Cloud | AI 영상 스토리룸과 멀티 클라우드 운영",
-  description: "프롬프트 입력으로 AI 영상 스토리룸을 설계하는 Logos Cloud 공식 홈페이지",
+  title: "Logos Cloud | Enterprise ITO, AI Ops & K8S Cloud",
+  description:
+    "기업 ITO 운영, AI 기반 운영 자동화, Kubernetes Cloud 엔지니어링을 수행하는 Logos Cloud 공식 홈페이지",
   openGraph: {
-    title: "Logos Cloud",
-    description: "Codex 계정 기반 프롬프트로 AI 영상 스토리룸 구축을 지원합니다.",
+    title: "Logos Cloud | Enterprise ITO, AI Ops & K8S Cloud",
+    description: "기업 IT 운영을 AI와 Cloud Native 방식으로 고도화하는 전문가 그룹",
     url: "https://www.logoscloud.co.kr",
     siteName: "Logos Cloud",
     images: [
       {
-        url: "/logoscloud-cloud-ai-hero.svg",
-        width: 1600,
-        height: 900,
-        alt: "Logos Cloud AI 영상 스토리룸과 멀티 클라우드 운영 화면"
+        url: "/logoscloud-ito-ai-k8s-hero.jpg",
+        width: 1742,
+        height: 922,
+        alt: "Logos Cloud 기업 ITO, AI Ops, K8S Cloud 운영센터"
       }
     ],
     locale: "ko_KR",
@@ -24,12 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Logos Cloud",
-    description: "프롬프트로 AI 영상 스토리룸을 설계합니다.",
-    images: ["/logoscloud-cloud-ai-hero.svg"]
-  },
-  alternates: {
-    canonical: "https://www.logoscloud.co.kr"
+    title: "Logos Cloud | Enterprise ITO, AI Ops & K8S Cloud",
+    description: "기업 IT 운영을 AI와 Cloud Native 방식으로 고도화하는 전문가 그룹",
+    images: ["/logoscloud-ito-ai-k8s-hero.jpg"]
   }
 };
 

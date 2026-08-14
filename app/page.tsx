@@ -1,65 +1,79 @@
 import Image from "next/image";
 import {
+  ArrowRight,
   BadgeCheck,
   BrainCircuit,
   Building2,
   Check,
-  Cloud,
-  ExternalLink,
-  Film,
+  CloudCog,
+  DatabaseZap,
+  Gauge,
+  GitBranch,
+  Layers3,
   Mail,
   Network,
-  Play,
-  ServerCog,
-  Sparkles,
-  Target,
+  ShieldCheck,
   Workflow
 } from "lucide-react";
-import StoryroomBuilder from "./storyroom-builder";
-
-const contactUrl = "https://tosky.co.kr/ko/contact/";
-
-const services = [
-  {
-    icon: Cloud,
-    title: "멀티 클라우드 운영과 구축",
-    description: "AWS, Azure, GCP, 프라이빗 클라우드를 목적에 맞게 설계하고 안정적인 운영 체계로 연결합니다."
-  },
-  {
-    icon: BrainCircuit,
-    title: "AI Agent 서비스 빌더",
-    description: "Codex 계정 기반 프롬프트를 기업 업무 흐름과 연결해 AI Agent와 자동화 서비스를 설계합니다."
-  },
-  {
-    icon: Film,
-    title: "AI 영상 스토리룸",
-    description: "프롬프트만 입력해 영상 목적, 장면 구성, 내레이션 방향까지 빠르게 스토리룸으로 만듭니다."
-  }
-];
-
-const process = [
-  "Codex 계정 선택",
-  "프롬프트 입력",
-  "영상 생성",
-  "영상 제작 문의"
-];
 
 const capabilities = [
   {
-    name: "Multi Cloud",
-    target: "멀티 클라우드 cloud",
-    items: ["클라우드 계정/네트워크 진단", "표준 아키텍처 설계", "운영 전환 로드맵"]
+    icon: CloudCog,
+    title: "Enterprise ITO 운영",
+    description:
+      "서버, 네트워크, 데이터베이스, 미들웨어, 클라우드 운영을 하나의 관제 흐름으로 정리하고 장애 대응 시간을 줄입니다."
   },
   {
-    name: "AI Leading",
-    target: "AI 선두를 이끌어 가는 기업",
-    items: ["AI Agent 전략", "Knowledge 기반 구축", "프롬프트 워크플로우 설계"]
+    icon: BrainCircuit,
+    title: "AI 기반 운영 고도화",
+    description:
+      "로그, 지표, 알림 데이터를 AI 분석 흐름과 연결해 반복 점검, 이상 징후 탐지, 운영 리포팅을 자동화합니다."
   },
   {
-    name: "StoryRoom",
-    target: "프롬프트를 영상 스토리로 전환",
-    items: ["장면 구성", "내레이션 방향", "영상 제작 도입 문의"]
+    icon: Layers3,
+    title: "K8S Cloud Engineering",
+    description:
+      "Kubernetes, 컨테이너 플랫폼, GitOps, 모니터링, 보안 기준을 운영 현장에 맞게 설계하고 안정화합니다."
   }
+];
+
+const operations = [
+  "24/7 운영 관제 체계",
+  "장애 분석 및 재발 방지",
+  "Kubernetes 플랫폼 운영",
+  "AI 자동점검 리포트",
+  "클라우드 비용/성능 최적화",
+  "보안·컴플라이언스 기준화"
+];
+
+const process = [
+  {
+    title: "현황 진단",
+    body: "현재 인프라, 운영 도구, 장애 이력, 알림 체계를 빠르게 파악해 개선 우선순위를 정합니다."
+  },
+  {
+    title: "운영 표준화",
+    body: "점검표, 대응 절차, 대시보드, 리포트 형식을 표준화해 누구나 같은 품질로 운영하게 만듭니다."
+  },
+  {
+    title: "AI 자동화",
+    body: "반복 점검과 이벤트 해석을 자동화하고, 필요한 알림만 선별해 운영자의 피로도를 낮춥니다."
+  },
+  {
+    title: "지속 개선",
+    body: "K8S, Cloud, 보안, 비용 지표를 주기적으로 개선하며 운영 품질을 장기적으로 끌어올립니다."
+  }
+];
+
+const stacks = [
+  "Kubernetes",
+  "Cloud Native",
+  "Prometheus",
+  "Grafana",
+  "GitOps",
+  "Linux",
+  "Database",
+  "AI Ops"
 ];
 
 export default function Home() {
@@ -68,14 +82,14 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Logos Cloud 홈">
           <span className="brand-mark">
-            <Cloud size={22} />
+            <CloudCog size={22} />
           </span>
           <strong>Logos Cloud</strong>
         </a>
         <nav aria-label="주요 메뉴">
-          <a href="#services">서비스</a>
-          <a href="#storyroom">StoryRoom</a>
-          <a href="#process">프로세스</a>
+          <a href="#capabilities">역량</a>
+          <a href="#operations">운영</a>
+          <a href="#process">방식</a>
           <a href="#contact">문의</a>
         </nav>
       </header>
@@ -83,8 +97,8 @@ export default function Home() {
       <section className="hero" id="top">
         <Image
           className="hero-image"
-          src="/logoscloud-cloud-ai-hero.svg"
-          alt="AI 영상 스토리룸과 멀티 클라우드 운영 대시보드"
+          src="/logoscloud-ito-ai-k8s-hero.jpg"
+          alt="기업 ITO 관제센터에서 AI와 Kubernetes Cloud 운영을 수행하는 전문 엔지니어 팀"
           fill
           priority
           sizes="100vw"
@@ -92,220 +106,177 @@ export default function Home() {
         <div className="hero-overlay" />
         <div className="hero-content">
           <p className="eyebrow">
-            <Sparkles size={16} />
-            Codex Prompt · AI StoryRoom · Multi Cloud
+            <ShieldCheck size={16} />
+            Enterprise ITO · AI Ops · K8S Cloud
           </p>
-          <h1>Codex 계정의 프롬프트로 영상 스토리룸을 만드는 플랫폼</h1>
+          <h1>기업 IT 운영을 AI와 Cloud Native 방식으로 선명하게 바꿉니다.</h1>
           <p className="hero-copy">
-            Logos Cloud는 나의 Codex 계정에서 사용하는 프롬프트 흐름을 기준으로 영상 목적, 장면 구성,
-            내레이션 방향을 설계하는 AI StoryRoom 화면을 제공합니다. 멀티 클라우드 운영과 AI 구축 역량으로 기업의 AX 전환을 지원합니다.
+            Logos Cloud는 ITO 운영 경험, AI 자동화 역량, Kubernetes Cloud 엔지니어링을
+            결합한 전문가 그룹입니다. 복잡한 운영 환경을 안정적이고 예측 가능한 체계로
+            정리합니다.
           </p>
           <div className="hero-actions">
-            <a className="primary-link" href={contactUrl} target="_blank" rel="noreferrer">
-              제품 도입 문의
-              <ExternalLink size={18} />
+            <a className="primary-link" href="#contact">
+              운영 상담하기
+              <ArrowRight size={18} />
             </a>
-            <a className="secondary-link" href="#storyroom">StoryRoom 체험 화면</a>
+            <a className="secondary-link" href="#capabilities">핵심 역량 보기</a>
           </div>
         </div>
       </section>
 
-      <section className="proof-strip" aria-label="핵심 강점">
+      <section className="proof-strip" aria-label="핵심 지표">
         <div>
-          <strong>Codex</strong>
-          <span>내 계정 기반 프롬프트 흐름</span>
+          <strong>ITO</strong>
+          <span>기업 인프라 운영 전문성</span>
         </div>
         <div>
-          <strong>Prompt</strong>
-          <span>프롬프트로 장면과 톤 설정</span>
+          <strong>AI</strong>
+          <span>자동점검과 운영 분석 고도화</span>
         </div>
         <div>
-          <strong>Video</strong>
-          <span>영상 미리보기 생성</span>
+          <strong>K8S</strong>
+          <span>Cloud Native 플랫폼 엔지니어링</span>
         </div>
       </section>
 
       <section className="section intro-section">
         <div>
-          <p className="section-kicker">Why Logos Cloud</p>
-          <h2>파일 업로드 없이 프롬프트만으로 영상 스토리가 시작됩니다.</h2>
+          <p className="section-kicker">Mission</p>
+          <h2>운영은 더 조용하게, 장애 대응은 더 빠르게, 인프라는 더 단단하게.</h2>
         </div>
         <p>
-          설명하고 싶은 제품, 서비스, 교육 내용을 프롬프트로 입력하면 StoryRoom이 핵심 메시지와 장면 흐름,
-          내레이션 방향을 구성하고 움직이는 영상 미리보기로 보여줍니다. Logos Cloud는 Codex 계정 기반의 프롬프트 경험을 영상 제작 화면으로 확장합니다.
+          기업 IT 운영은 단순 유지보수가 아니라 서비스 신뢰도를 지키는 핵심 업무입니다.
+          Logos Cloud는 현장 운영자의 관점에서 관제, 자동화, Kubernetes, Cloud, ��안을
+          연결해 운영 품질을 끌어올립니다.
         </p>
       </section>
 
-      <section className="section" id="services">
+      <section className="section" id="capabilities">
         <div className="section-head">
-          <p className="section-kicker">Services</p>
-          <h2>AI 영상 제작과 클라우드 운영에 필요한 핵심 서비스</h2>
+          <p className="section-kicker">Capabilities</p>
+          <h2>기업 운영 환경에 바로 적용되는 전문 역량</h2>
         </div>
         <div className="service-grid">
-          {services.map((service) => {
-            const Icon = service.icon;
+          {capabilities.map((item) => {
+            const Icon = item.icon;
             return (
-              <article className="service-card" key={service.title}>
+              <article className="service-card" key={item.title}>
                 <span>
                   <Icon size={24} />
                 </span>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </article>
             );
           })}
         </div>
       </section>
 
-      <section className="storyroom-section" id="storyroom">
-        <div className="storyroom-copy">
-          <p className="section-kicker">StoryRoom Builder</p>
-          <h2>프롬프트를 입력하면 영상 미리보기가 바로 생성됩니다.</h2>
-          <p>
-            내 Codex 계정에서 작업하듯 프롬프트를 입력하고 영상 생성 버튼을 누르면,
-            StoryRoom이 장면 흐름과 내레이션 방향을 만들고 움직이는 영상 미리보기로 보여줍니다.
-          </p>
-          <a className="primary-link storyroom-link" href={contactUrl} target="_blank" rel="noreferrer">
-            제품 도입 문의
-            <ExternalLink size={18} />
-          </a>
-        </div>
-
-        <StoryroomBuilder contactUrl={contactUrl} />
-      </section>
-
-      <section className="story-preview" aria-label="영상 스토리룸 미리보기">
-        <div className="preview-player">
-          <span className="play-mark">
-            <Play size={30} fill="currentColor" />
-          </span>
-          <div>
-            <p className="section-kicker">Generated Story</p>
-            <h2>프롬프트 기반 영상 시나리오 미리보기</h2>
-          </div>
-        </div>
-        <div className="scene-list">
-          <article>
-            <span>01</span>
-            <h3>영상 목적 정의</h3>
-            <p>입력한 프롬프트에서 대상 고객, 메시지, 영상 톤을 정리합니다.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>장면 구성</h3>
-            <p>핵심 내용을 장면 단위로 나누고 화면 흐름을 설계합니다.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>영상 미리보기 생성</h3>
-            <p>영상 길이와 목적에 맞춘 움직이는 미리보기와 내레이션 방향을 생성합니다.</p>
-          </article>
-        </div>
-      </section>
-
-      <section className="feature-band">
+      <section className="feature-band" id="operations">
         <div className="feature-copy">
-          <p className="section-kicker">Cloud Operating Model</p>
-          <h2>StoryRoom 뒤에는 안정적인 멀티 클라우드와 AI 운영 기반이 필요합니다.</h2>
+          <p className="section-kicker">Operating Model</p>
+          <h2>관제, 자동화, 플랫폼 운영을 하나의 흐름으로 연결합니다.</h2>
           <p>
-            클라우드 리소스, 컨테이너 플랫폼, AI 운영 환경을 표준화해 기업형 AI 서비스를 안정적으로 확장할 수 있게 설계합니다.
+            알림이 많아도 중요한 신호를 놓치지 않도록 운영 기준을 정리하고, AI 분석과
+            자동 리포팅으로 반복 업무를 줄입니다. K8S와 Cloud 환경은 안정성, 비용,
+            보안을 함께 보며 운영합니다.
           </p>
         </div>
-        <div className="brand-board" aria-label="클라우드 운영 구성 요소">
-          <div className="board-tile dark">
-            <Network size={34} />
-            <span>Multi Cloud</span>
-          </div>
-          <div className="board-tile blue">AI Agent</div>
-          <div className="board-tile teal">StoryRoom</div>
-          <div className="board-tile yellow">K8S</div>
-          <div className="board-tile wide">Logos Cloud</div>
-          <div className="board-tile line">Secure Operations</div>
+        <div className="ops-board" aria-label="운영 영역">
+          {operations.map((item, index) => (
+            <div className="ops-tile" key={item}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section stack-section">
+        <div className="section-head">
+          <p className="section-kicker">Stack</p>
+          <h2>현장 운영에 필요한 기술을 실무 중심으로 다룹니다.</h2>
+        </div>
+        <div className="stack-grid">
+          {stacks.map((stack) => (
+            <span key={stack}>{stack}</span>
+          ))}
         </div>
       </section>
 
       <section className="section" id="process">
         <div className="section-head">
           <p className="section-kicker">Process</p>
-          <h2>Codex 계정 선택부터 영상 제작 문의까지 이어지는 흐름</h2>
+          <h2>운영 환경을 진단하고 자동화까지 이어가는 방식</h2>
         </div>
         <div className="process-list">
           {process.map((item, index) => (
-            <article key={item}>
+            <article key={item.title}>
               <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{item}</h3>
-              <p>
-                {index === 0 && "내 Codex 계정 기반으로 사용할 프롬프트 작업 환경을 선택합니다."}
-                {index === 1 && "영상 목적, 대상 고객, 톤앤매너, 분량을 프롬프트로 입력합니다."}
-                {index === 2 && "핵심 메시지와 장면 흐름을 만들고 움직이는 영상 미리보기로 확인합니다."}
-                {index === 3 && "구체적인 제작 범위는 제품 도입 문의 페이지에서 상담으로 연결합니다."}
-              </p>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section" id="packages">
+      <section className="section evidence-section">
         <div className="section-head">
-          <p className="section-kicker">Capabilities</p>
-          <h2>사업 단계에 맞춰 선택하는 AI 도입 범위</h2>
+          <p className="section-kicker">Expert Group</p>
+          <h2>K8S Cloud 엔지니어들이 운영의 기준을 세웁니다.</h2>
         </div>
-        <div className="package-grid">
-          {capabilities.map((item) => (
-            <article className="package-card" key={item.name}>
-              <div>
-                <ServerCog size={22} />
-                <h3>{item.name}</h3>
-              </div>
-              <p>{item.target}</p>
-              <ul>
-                {item.items.map((entry) => (
-                  <li key={entry}>
-                    <Check size={16} />
-                    {entry}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
+        <div className="evidence-grid">
+          <article>
+            <Network size={24} />
+            <h3>인프라 전체 시야</h3>
+            <p>서버, 네트워크, 보안, 클라우드, 애플리케이션 지표를 함께 보며 원인을 좁힙니다.</p>
+          </article>
+          <article>
+            <Gauge size={24} />
+            <h3>운영 품질 지표화</h3>
+            <p>장애, 성능, 비용, 알림 품질을 지표로 만들고 개선 여부를 추적합니다.</p>
+          </article>
+          <article>
+            <DatabaseZap size={24} />
+            <h3>자동화 가능한 운영</h3>
+            <p>반복 점검과 보고를 자동화해 엔지니어가 더 중요한 판단에 집중하도록 합니다.</p>
+          </article>
         </div>
       </section>
 
       <section className="cta-section" id="contact">
         <div>
           <p className="section-kicker">Contact</p>
-          <h2>AI 영상 스토리룸과 멀티 클라우드 도입을 함께 설계하겠습니다.</h2>
+          <h2>기업 운영 환경을 더 안정적인 Cloud Native 체계로 바꾸고 싶다면.</h2>
           <p>
-            만들고 싶은 영상 목적, 프롬프트 작업 방식, 클라우드 운영 환경을 보내주시면 필요한 구축 범위와 도입 일정을 정리해드립니다.
+            현재 운영 중인 인프라, Kubernetes 클러스터, 장애 이력, 자동화 목표를 알려주시면
+            필요한 진단 범위와 개선 방향을 정리해드리겠습니다.
           </p>
         </div>
         <div className="contact-box">
-          <a href="mailto:kjy5894@logosin.co.kr">
+          <a href="mailto:hello@logoscloud.co.kr">
             <Mail size={20} />
-            kjy5894@logosin.co.kr
-          </a>
-          <a href={contactUrl} target="_blank" rel="noreferrer">
-            <ExternalLink size={20} />
-            제품 도입 문의
+            hello@logoscloud.co.kr
           </a>
           <span>
             <Building2 size={20} />
-            AI video StoryRoom and multi cloud
+            Enterprise ITO Consulting
           </span>
           <span>
-            <Target size={20} />
-            프롬프트 기반 영상 기획, AI Agent, K8S 운영
+            <GitBranch size={20} />
+            Kubernetes & Cloud Native
           </span>
           <span>
             <Workflow size={20} />
-            상담 후 맞춤 제안
+            AI Ops Automation
           </span>
         </div>
       </section>
 
       <footer className="site-footer">
         <strong>Logos Cloud</strong>
-        <span>© 2026 Logos Cloud. AI StoryRoom, multi cloud and Kubernetes operations.</span>
+        <span>© 2026 Logos Cloud. Enterprise ITO, AI Ops and K8S Cloud Engineering.</span>
         <span>
           <BadgeCheck size={16} />
           www.logoscloud.co.kr
