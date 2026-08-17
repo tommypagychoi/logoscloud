@@ -4,7 +4,6 @@ import {
   BadgeCheck,
   BrainCircuit,
   Building2,
-  Check,
   CloudCog,
   DatabaseZap,
   Gauge,
@@ -147,7 +146,7 @@ export default function Home() {
         </div>
         <p>
           기업 IT 운영은 단순 유지보수가 아니라 서비스 신뢰도를 지키는 핵심 업무입니다.
-          Logos Cloud는 현장 운영자의 관점에서 관제, 자동화, Kubernetes, Cloud, ��안을
+          Logos Cloud는 현장 운영자의 관점에서 관제, 자동화, Kubernetes, Cloud, 보안을
           연결해 운영 품질을 끌어올립니다.
         </p>
       </section>
