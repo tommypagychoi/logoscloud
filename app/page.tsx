@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
@@ -75,48 +74,68 @@ const stacks = [
   "AI Ops"
 ];
 
+const lightNodes = Array.from({ length: 36 }, (_, index) => index);
+
 export default function Home() {
   return (
     <main>
+      <div className="launch-bar">
+        <strong>LOGOS CLOUD AI OPS</strong>
+        <span>Enterprise ITO · K8S Cloud · Intelligent Operation</span>
+      </div>
+
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Logos Cloud 홈">
           <span className="brand-mark">
             <CloudCog size={22} />
           </span>
-          <strong>Logos Cloud</strong>
+          <strong>LOGOS CLOUD</strong>
         </a>
         <nav aria-label="주요 메뉴">
-          <a href="#capabilities">역량</a>
-          <a href="#operations">운영</a>
-          <a href="#process">방식</a>
-          <a href="#contact">문의</a>
+          <a href="#capabilities">AI Ops</a>
+          <a href="#operations">ITO 운영</a>
+          <a href="#process">K8S Cloud</a>
+          <a href="#contact">문의하기</a>
         </nav>
       </header>
 
       <section className="hero" id="top">
-        <Image
-          className="hero-image"
-          src="/logoscloud-ito-ai-k8s-hero.jpg"
-          alt="기업 ITO 관제센터에서 AI와 Kubernetes Cloud 운영을 수행하는 전문 엔지니어 팀"
-          fill
-          priority
-          sizes="100vw"
-        />
+        <div className="hero-visual" aria-hidden="true">
+          <div className="fiber fiber-a" />
+          <div className="fiber fiber-b" />
+          <div className="fiber fiber-c" />
+          <div className="fiber fiber-d" />
+          <div className="light-field">
+            {lightNodes.map((node) => (
+              <span key={node} />
+            ))}
+          </div>
+          <div className="signal-core">
+            <span />
+            <span />
+            <span />
+          </div>
+        </div>
         <div className="hero-overlay" />
         <div className="hero-content">
           <p className="eyebrow">
             <ShieldCheck size={16} />
             Enterprise ITO · AI Ops · K8S Cloud
           </p>
-          <h1>기업 IT 운영을 AI와 Cloud Native 방식으로 선명하게 바꿉니다.</h1>
+          <h1>
+            AI가 운영을 읽고,
+            <br />
+            엔지니어가 기준을 세우며,
+            <br />
+            클라우드는 더 단단해집니다.
+          </h1>
           <p className="hero-copy">
-            Logos Cloud는 ITO 운영 경험, AI 자동화 역량, Kubernetes Cloud 엔지니어링을
-            결합한 전문가 그룹입니다. 복잡한 운영 환경을 안정적이고 예측 가능한 체계로
-            정리합니다.
+            Logos Cloud는 기업 ITO 운영, AI 기반 자동점검, Kubernetes Cloud 엔지니어링을
+            하나의 운영 체계로 연결하는 전문가 그룹입니다.
           </p>
           <div className="hero-actions">
             <a className="primary-link" href="#contact">
-              운영 상담하기
+              제품 문의하기
               <ArrowRight size={18} />
             </a>
             <a className="secondary-link" href="#capabilities">핵심 역량 보기</a>
@@ -125,18 +144,9 @@ export default function Home() {
       </section>
 
       <section className="proof-strip" aria-label="핵심 지표">
-        <div>
-          <strong>ITO</strong>
-          <span>기업 인프라 운영 전문성</span>
-        </div>
-        <div>
-          <strong>AI</strong>
-          <span>자동점검과 운영 분석 고도화</span>
-        </div>
-        <div>
-          <strong>K8S</strong>
-          <span>Cloud Native 플랫폼 엔지니어링</span>
-        </div>
+        <div><strong>ITO</strong><span>기업 인프라 운영 전문성</span></div>
+        <div><strong>AI</strong><span>자동점검과 운영 분석 고도화</span></div>
+        <div><strong>K8S</strong><span>Cloud Native 플랫폼 엔지니어링</span></div>
       </section>
 
       <section className="section intro-section">
@@ -161,9 +171,7 @@ export default function Home() {
             const Icon = item.icon;
             return (
               <article className="service-card" key={item.title}>
-                <span>
-                  <Icon size={24} />
-                </span>
+                <span><Icon size={24} /></span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </article>
@@ -198,9 +206,7 @@ export default function Home() {
           <h2>현장 운영에 필요한 기술을 실무 중심으로 다룹니다.</h2>
         </div>
         <div className="stack-grid">
-          {stacks.map((stack) => (
-            <span key={stack}>{stack}</span>
-          ))}
+          {stacks.map((stack) => (<span key={stack}>{stack}</span>))}
         </div>
       </section>
 
@@ -254,32 +260,17 @@ export default function Home() {
           </p>
         </div>
         <div className="contact-box">
-          <a href="mailto:hello@logoscloud.co.kr">
-            <Mail size={20} />
-            hello@logoscloud.co.kr
-          </a>
-          <span>
-            <Building2 size={20} />
-            Enterprise ITO Consulting
-          </span>
-          <span>
-            <GitBranch size={20} />
-            Kubernetes & Cloud Native
-          </span>
-          <span>
-            <Workflow size={20} />
-            AI Ops Automation
-          </span>
+          <a href="mailto:hello@logoscloud.co.kr"><Mail size={20} />hello@logoscloud.co.kr</a>
+          <span><Building2 size={20} />Enterprise ITO Consulting</span>
+          <span><GitBranch size={20} />Kubernetes & Cloud Native</span>
+          <span><Workflow size={20} />AI Ops Automation</span>
         </div>
       </section>
 
       <footer className="site-footer">
         <strong>Logos Cloud</strong>
         <span>© 2026 Logos Cloud. Enterprise ITO, AI Ops and K8S Cloud Engineering.</span>
-        <span>
-          <BadgeCheck size={16} />
-          www.logoscloud.co.kr
-        </span>
+        <span><BadgeCheck size={16} />www.logoscloud.co.kr</span>
       </footer>
     </main>
   );
